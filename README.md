@@ -1,43 +1,29 @@
-aaa
+Addition to the "RBF Nodes" addon.
 
-# Add-ons for Blender
 
-This is a free add-on collection for Blender which will be extended over time as production calls for the creation of new tools.
+Adds two new Operators to the RBF Nodes editor, to allow creating multiple Input/Output Nodes automatically from all selected Objects or Bones, and automatically connecting these new nodes to the active node in the RBF editor.
+Also adds a new menu "Add multiple" to contain these operators, as a submenu to the header's "Add" menu.
 
-Feel free to download and use any available.
 
-## PickWalk
-Navigate through a hierarchy of objects or bones of an armature or walk over vertices and points of meshes and curves in edit mode.
-It basically copies the default pickwalking behaviour of Maya with additional selection extension and opposite side switching.
+The new Operators are called:
+    "Objects Input Nodes (Selected)" - bpy.ops.node.add_nodes_input_from_selected() 
+    and 
+    "Objects Output Nodes (Selected)" - bpy.ops.node.add_nodes_output_from_selected()
 
-[Documentation](https://github.com/IngoClemens/blender/wiki/PickWalk)
+These new Operators are present in the RBF Nodes editor, in:
+    . Header -> menu "Add" -> "Add multiple" -> "Objects Input Nodes (Selected)"/"Objects Output Nodes (Selected)".
+    . Context Menu (by pressing "W" by default) -> "Add Multiple" -> (operators names)
+    . Add menu (by pressing Shift+A by default) -> "Add Multiple" -> (operators names)
+    . search Menu (by pressing Space) -> "Add Multiple" -> (operators names)
 
-## Place Reflection
-Perform a reflection-based placement of lights (or any other object) on a mesh by simply dragging the mouse over the mesh.
 
-[Documentation](https://github.com/IngoClemens/blender/wiki/Place-Reflection)
+Usage example:
+- Open rbf editor in one of the window areas.
+- Create and select an rbf nodes tree in that editor. 
+- In another editor area, such as 3d view or Outliner, select one or multiple objects, or pose bones for one or multiple armatures, or even edit bones. (To select bones from different armatures, first select the armature objects in Object Mode, then switch to Pose mode or Edit Mode, then select the bones from the multiple armatures).
+- Go back to RBF Editor Area, and in that, ensure the RBF Node is selected, and in the header -> Add -> "Add multiple". Multiple Input (or Output) Nodes will be created, with their "Object" and "Bone" fields filled, and automatically linked to the corresponding slot in the active node in the RBF node editor. 
 
-## Rapid SDK
-One-button tool to quickly set up driving relationships between one or more properties, aimed to simplify the steps needed to adjust relative ranges or even non-linear behavior.
 
-[Documentation](https://github.com/IngoClemens/blender/wiki/Rapid-SDK)
 
-## RBF Nodes
-Node-based RBF solver for driving multiple properties with multiple driver values.
-
-[Documentation](https://github.com/IngoClemens/blender/wiki/RBF-Nodes)
-
-## Smooth Weights
-Advanced tool for smoothing mesh weights by averaging neighbouring weights.
-
-[Documentation](https://github.com/IngoClemens/blender/wiki/Smooth-Weights)
-
-## Thumb Mate
-Create customizable thumbnail previews for object assets in the asset browser.
-
-[Documentation](https://github.com/IngoClemens/blender/wiki/Thumb-Mate)
-
-## Tool Shelf
-Save scripts as buttons and organize them in groups for easy access.
-
-[Documentation](https://github.com/IngoClemens/blender/wiki/Tool-Shelf)
+NOTE FOR DEVELOPERS:
+Due to these operators being dependent on an open and visible RBF Nodes Editor, with an existing and present Node Tree, the operators will fail to be run from the console (can only be invoked while inside the RBF editor area itself).
