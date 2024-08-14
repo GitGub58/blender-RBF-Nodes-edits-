@@ -21,7 +21,7 @@ Usage example:
 - Open rbf editor in one of the window areas.
 - Create and select an rbf nodes tree in that editor. 
 - In another editor area, such as 3d view or Outliner, select one or multiple objects, or pose bones for one or multiple armatures, or even edit bones. (To select bones from different armatures, first select the armature objects in Object Mode, then switch to Pose mode or Edit Mode, then select the bones from the multiple armatures).
-- Go back to RBF Editor Area, and in that, ensure the RBF Node is selected, and in the header -> Add -> "Add multiple". Multiple Input (or Output) Nodes will be created, with their "Object" and "Bone" fields filled, and automatically linked to the corresponding slot in the active node in the RBF node editor. 
+- Go back to RBF Editor Area, and in that, ensure an "RBF Node" is created, selected and active, and then navigate to the Operators in the editor's header -> "Add" menu -> "Add multiple" menu -> choose one of the Operators for either creating Input or Output Object nodes. Multiple Input (or Output) Nodes will be created, one for each selected Bone or Object, with their "Object" and "Bone" fields filled, and automatically linked to the corresponding slot in the active node in the RBF node editor. 
 
 
 
