@@ -29,6 +29,9 @@ EDIT_DRIVEN_LABEL = "Edit Driven"
 EDIT_DRIVER_LABEL = "Edit Driver"
 RECALL_POSE_LABEL = "Recall"
 RESET_RBF_LABEL = "Reset RBF"
+CREATE_FROM_SELECTED_INPUT_LABEL = "Objects Input Nodes (Selected)"
+CREATE_FROM_SELECTED_OUTPUT_LABEL = "Objects Output Nodes (Selected)"
+
 
 # Panel
 ACTIVATION_LABEL = "Activation"
@@ -128,6 +131,8 @@ ANN_EDIT_DRIVEN = "Search and replace pose driven data of all poses."
 ANN_EDIT_DRIVER = "Search and replace pose driver data of all poses."
 ANN_RECALL_POSE = "Set the properties of the RBF to match the selected pose"
 ANN_RESET_RBF = "Resets the RBF to it's default and removes all drivers"
+ANN_CREATE_FROM_SELECTED_INPUT = "Creates multiple 'Object Input' nodes, one for each selected object/bone, and links them to the active node's 'Object Input' socket. Must be run from inside a Node Tree editor."
+ANN_CREATE_FROM_SELECTED_OUTPUT = "Creates multiple 'Object Output' nodes, one for each selected object/bone, and links them to the active node's 'Object Output' socket. Must be run from inside a Node Tree editor."
 
 # Panel
 INFO_RESET_TO_UPDATE = "Reset the RBF to update"

@@ -3,7 +3,7 @@
 import bpy
 import bpy.utils.previews
 
-from . import operators, panel
+from . import operators, panel, menus
 # from . icons import toolIcons
 
 
@@ -23,8 +23,11 @@ classes = [operators.RBFNODES_OT_CreateRBF,
            operators.RBFNODES_OT_DumpRBF,
            operators.RBFNODES_OT_SearchReplacePoseDriverData,
            operators.RBFNODES_OT_SearchReplacePoseDrivenData,
+           operators.RBFNODES_OT_CreateObjectInputNodesFromSelectedObjectsOrBones,
+           operators.RBFNODES_OT_CreateObjectOutputNodesFromSelectedObjectsOrBones,
            panel.RBF_Nodes_Properties,
-           panel.RBFNODES_PT_RBF]
+           panel.RBFNODES_PT_RBF,
+           menus.NODE_MT_add_multiple]
 
 
 def register():

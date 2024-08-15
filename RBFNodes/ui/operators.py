@@ -3,7 +3,7 @@
 import bpy
 
 from .. import language
-from .. core import dev, rbf, nodeTree, poses
+from .. core import dev, rbf, nodeTree, poses, add_multiple
 
 
 # Get the current language.
@@ -76,6 +76,7 @@ class RBFNODES_OT_CreateNodeInput(bpy.types.Operator):
         :param context: The current context.
         :type context: bpy.context
         """
+        print("operators.RBFNODES_OT_CreateNodeInput.execute")
         nodeTree.createInputNode(context)
 
         return {'FINISHED'}
@@ -283,3 +284,62 @@ class RBFNODES_OT_SearchReplacePoseDrivenData(bpy.types.Operator):
                                    driver=False)
         self.report(result[0], result[1])
         return {'FINISHED'}
+
+
+class RBFNODES_OT_CreateObjectInputNodesFromSelectedObjectsOrBones(bpy.types.Operator):
+    """Operator class for creating multiple "Object Input" nodes, one for each selected object or edit/pose bone, and linking them to the active node in the node tree editor.
+    Present in the RBF Nodes Editor, in the header -> "Add" Menu -> "Add Multiple", or in the context menu "Add Multiple".
+    """
+    bl_idname = "node.add_nodes_input_from_selected"
+    bl_label = strings.CREATE_FROM_SELECTED_INPUT_LABEL
+    bl_description = strings.ANN_CREATE_FROM_SELECTED_INPUT
+    bl_options = {'REGISTER', 'UNDO'}
+
+    # ------------------------------------------------------------------
+    # General operator methods.
+    # ------------------------------------------------------------------
+    
+    def execute(self, context):
+        """Execute the operator.
+
+        :param context: The current context.
+        :type context: bpy.context
+        """
+        if add_multiple.debug_print__node_add_nodes_input_from_selected_execute:
+            print("\nnode.add_nodes_input_from_selected.execute()")
+        
+        return add_multiple.rbf_nodes__create_nodes_from_selected_objects(context, True)
+
+    @classmethod
+    def poll(cls, context):
+        return add_multiple.rbf__nodes__create_nodes_from_selected_objects__poll(context)
+    pass
+
+
+class RBFNODES_OT_CreateObjectOutputNodesFromSelectedObjectsOrBones(bpy.types.Operator):
+    """Operator class for creating multiple "Object Output" nodes, one for each selected object or edit/pose bone, and linking them to the active node in the node tree editor.
+    Present in the RBF Nodes Editor, in the header -> "Add" Menu -> "Add Multiple", or in the context menu "Add Multiple".
+    """
+    bl_idname = "node.add_nodes_output_from_selected"
+    bl_label = strings.CREATE_FROM_SELECTED_OUTPUT_LABEL
+    bl_description = strings.ANN_CREATE_FROM_SELECTED_OUTPUT
+    bl_options = {'REGISTER', 'UNDO'}
+
+    # ------------------------------------------------------------------
+    # General operator methods.
+    # ------------------------------------------------------------------
+    
+    def execute(self, context):
+        """Execute the operator.
+
+        :param context: The current context.
+        :type context: bpy.context
+        """
+        if add_multiple.debug_print__node_add_nodes_output_from_selected_execute:
+            print("\nnode.add_nodes_output_from_selected.execute()")
+        return add_multiple.rbf_nodes__create_nodes_from_selected_objects(context, False)
+
+    @classmethod
+    def poll(cls, context):
+        return add_multiple.rbf__nodes__create_nodes_from_selected_objects__poll(context)
+    pass
